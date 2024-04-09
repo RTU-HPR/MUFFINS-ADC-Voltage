@@ -25,7 +25,7 @@ public:
   };
 
 private:
-  Config _config
+  Config _config;
   float _conversion_factor;
 
 public:
