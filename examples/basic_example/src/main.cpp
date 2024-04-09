@@ -16,7 +16,7 @@ ADC_Voltage::Data data;
 void setup()
 {
   Serial.begin(9600);
-  while{!Serial}
+  while(!Serial)
   {
     delay(1000);
   }

@@ -57,6 +57,6 @@ bool ADC_Voltage::read(Data &data)
 {
   // Read the voltage
   // U = ADC * C_F
-  data.voltage = analogRead(_pin) * _conversion_factor;
+  data.voltage = analogRead(_config.pin) * _conversion_factor;
   return true;
 }
