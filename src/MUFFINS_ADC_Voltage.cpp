@@ -49,6 +49,7 @@ bool ADC_Voltage::begin(const Config &config)
 
   info("Conversion factor: " + String(_conversion_factor, 4));
   info("Initialized");
+  set_initialized(true)
 
   return true;
 }
