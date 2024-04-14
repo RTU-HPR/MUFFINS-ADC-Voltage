@@ -4,29 +4,28 @@
 ADC_Voltage battery_voltage;
 
 ADC_Voltage::Config battery_voltage_config = {
-  .pin = A0,
-  .adc_resolution = 1024,
-  .reference_voltage = 5.0,
-  .R1_value = 10000,
-  .R2_value = 10000
+    .pin = 26,                
+    .adc_resolution = 4095,
+    .reference_voltage = 3.3,
+    .R1_value = 51000,
+    .R2_value = 24000,
 };
-
-ADC_Voltage::Data data;
 
 void setup()
 {
   Serial.begin(115200);
-  while(!Serial)
+  while (!Serial)
   {
     delay(1000);
   }
-  
+
+  analogReadResolution(12);
   battery_voltage.begin(battery_voltage_config);
 }
 
 void loop()
 {
-  battery_voltage.read(data);
+  battery_voltage.read();
   Serial.println("Voltage: " + String(data.voltage) + " V");
   delay(100);
 }

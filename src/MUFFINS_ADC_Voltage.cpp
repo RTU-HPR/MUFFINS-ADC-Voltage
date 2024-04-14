@@ -53,8 +53,13 @@ bool ADC_Voltage::begin(const Config &config)
   return true;
 }
 
-bool ADC_Voltage::read(Data &data)
+bool ADC_Voltage::read()
 {
+  if (!initialized())
+  {
+    return false;
+  }
+  
   // Read the voltage
   // U = ADC * C_F
   data.voltage = analogRead(_config.pin) * _conversion_factor;

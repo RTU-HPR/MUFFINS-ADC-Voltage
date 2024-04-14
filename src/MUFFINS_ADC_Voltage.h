@@ -22,7 +22,7 @@ public:
   struct Data
   {
     float voltage;
-  };
+  } data;
 
 private:
   Config _config;
@@ -49,9 +49,8 @@ public:
 
   /**
    * @brief Reads the  voltage.
-   *
-   * @param data The data structure to store the read data in.
+   * 
    * @return True if the data was successfully read, false otherwise.
    */
-  bool read(Data &data);
+  bool read();
 };
