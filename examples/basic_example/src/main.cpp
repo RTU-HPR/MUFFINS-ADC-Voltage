@@ -2,7 +2,6 @@
 #include "MUFFINS_ADC_Voltage.h"
 
 ADC_Voltage battery_voltage;
-
 ADC_Voltage::Config battery_voltage_config = {
     .pin = 26,                
     .adc_resolution = 4095,
@@ -20,12 +19,19 @@ void setup()
   }
 
   analogReadResolution(12);
+  pinMode(battery_voltage_config.pin, INPUT);
   battery_voltage.begin(battery_voltage_config);
 }
 
 void loop()
 {
-  battery_voltage.read();
-  Serial.println("Voltage: " + String(data.voltage) + " V");
+  if (battery_voltage.read())
+  {
+    Serial.println("Voltage: " + String(battery_voltage.data.voltage) + " V");
+  }
+  else
+  {
+    Serial.println("Error reading voltage");
+  }
   delay(100);
 }
